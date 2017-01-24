@@ -21,7 +21,7 @@ apply plugin: 'java'
 apply plugin: 'jp.classmethod.aws.lambda'
 apply plugin: "com.github.johnrengelman.shadow"
 
-group 'vanderfox.alexa.comic'
+group 'vanderfox.alexa.alternatefacts'
 version '1.0-SNAPSHOT'
 
 repositories {
@@ -74,8 +74,8 @@ aws {
 }
 
 task deploy(type: AWSLambdaMigrateFunctionTask, dependsOn: build) {
-    functionName = "ComicGroovy"
-    handler = "com.vanderfox.comic.ComicSpeechletRequestStreamHandler"
+    functionName = "AlternateGroovy"
+    handler = "com.vanderfox.alternatefacts.AlternateFactsSpeechletRequestStreamHandler"
     role = "arn:aws:iam::${aws.accountId}:role/lambda_basic_execution"
     runtime = Runtime.Java8
     zipFile = buildZip.archivePath
